@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmithSites — Professional Websites for Local Businesses</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0F1F3D;
+  --navy-mid:#1A3360;
+  --gold:#F5A623;
+  --gold-light:#FEF3DC;
+  --white:#FFFFFF;
+  --gray-50:#F7F9FC;
+  --gray-100:#EEF2F7;
+  --gray-300:#CBD5E1;
+  --gray-500:#64748B;
+  --gray-700:#334155;
+  --green:#22C55E;
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:20px;
+  --shadow-sm:0 1px 3px rgba(15,31,61,0.08),0 1px 2px rgba(15,31,61,0.04);
+  --shadow-md:0 4px 16px rgba(15,31,61,0.10),0 2px 6px rgba(15,31,61,0.06);
+  --shadow-lg:0 20px 60px rgba(15,31,61,0.15);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--gray-700);background:var(--white);line-height:1.6}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;color:var(--navy);line-height:1.2}
+a{text-decoration:none;color:inherit}
+img{max-width:100%}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--gray-100);padding:0 5%}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.4rem;color:var(--navy);display:flex;align-items:center;gap:8px}
+.logo-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;display:inline-block}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:0.9rem;font-weight:500;color:var(--gray-500);transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{background:var(--navy);color:var(--white)!important;padding:10px 22px;border-radius:var(--radius-sm);font-weight:600!important;font-size:0.85rem!important;transition:background .2s!important}
+.nav-cta:hover{background:var(--navy-mid)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:var(--navy);border-radius:2px;transition:.3s}
+
+/* HERO */
+.hero{padding:140px 5% 90px;background:linear-gradient(160deg,var(--navy) 0%,var(--navy-mid) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(245,166,35,0.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,255,255,0.04) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,166,35,0.15);border:1px solid rgba(245,166,35,0.3);color:var(--gold);padding:6px 14px;border-radius:100px;font-size:0.8rem;font-weight:600;margin-bottom:24px}
+.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero h1{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:800;color:var(--white);margin-bottom:20px;letter-spacing:-0.02em}
+.hero h1 span{color:var(--gold)}
+.hero p{color:rgba(255,255,255,0.72);font-size:1.1rem;margin-bottom:36px;max-width:480px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--gold);color:var(--navy);padding:14px 28px;border-radius:var(--radius-sm);font-weight:700;font-size:0.95rem;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,0.4)}
+.btn-outline{background:transparent;color:var(--white);padding:14px 28px;border-radius:var(--radius-sm);font-weight:600;font-size:0.95rem;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:1px solid rgba(255,255,255,0.25);transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.btn-outline:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.5)}
+.hero-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:28px;backdrop-filter:blur(8px)}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.stat{background:rgba(255,255,255,0.07);border-radius:var(--radius-md);padding:20px;text-align:center}
+.stat-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.8rem;font-weight:800;color:var(--gold);display:block}
+.stat-label{font-size:0.78rem;color:rgba(255,255,255,0.55);margin-top:2px}
+.hero-pricing{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.25);border-radius:var(--radius-md);padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+.price-item{text-align:center}
+.price-num{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.4rem;font-weight:800;color:var(--white)}
+.price-label{font-size:0.72rem;color:rgba(255,255,255,0.5);margin-top:2px}
+.price-divider{width:1px;height:40px;background:rgba(255,255,255,0.15)}
+
+/* TRUST BAR */
+.trust-bar{background:var(--gray-50);border-bottom:1px solid var(--gray-100);padding:18px 5%}
+.trust-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:500;color:var(--gray-500)}
+.trust-icon{font-size:1rem}
+
+/* SECTIONS */
+section{padding:90px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-label{font-size:0.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.section-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;color:var(--navy);margin-bottom:16px;letter-spacing:-0.02em}
+.section-sub{font-size:1.05rem;color:var(--gray-500);max-width:560px}
+
+/* DEMOS */
+#demos{background:var(--white)}
+.demos-header{text-align:center;margin-bottom:56px}
+.demos-header .section-sub{margin:0 auto}
+.demos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.demo-card{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);transition:transform .25s,box-shadow .25s;cursor:pointer;background:var(--white);border:1px solid var(--gray-100)}
+.demo-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.demo-preview{height:200px;position:relative;overflow:hidden}
+.demo-preview-inner{width:100%;height:100%;display:flex;flex-direction:column}
+
+/* BARBERSHOP DEMO */
+.demo-barber{background:#1a1a2e}
+.demo-barber .db-nav{background:#16213e;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+.demo-barber .db-logo{color:#e94560;font-weight:700;font-size:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.demo-barber .db-links{display:flex;gap:8px}
+.demo-barber .db-links span{font-size:7px;color:rgba(255,255,255,0.5)}
+.demo-barber .db-hero{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;background:linear-gradient(135deg,#1a1a2e,#16213e)}
+.demo-barber .db-title{color:white;font-size:13px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-0.5px}
+.demo-barber .db-sub{color:rgba(255,255,255,0.5);font-size:7px}
+.demo-barber .db-btn{background:#e94560;color:white;font-size:7px;padding:4px 10px;border-radius:4px;font-weight:700}
+.demo-barber .db-scissors{font-size:20px;margin-bottom:4px}
+
+/* BAKERY DEMO */
+.demo-bakery{background:#fdf6ec}
+.demo-bakery .dk-nav{background:white;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0e8d8}
+.demo-bakery .dk-logo{color:#c0392b;font-weight:800;font-size:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.demo-bakery .dk-hero{flex:1;display:flex;padding:12px;gap:10px;align-items:center}
+.demo-bakery .dk-text{flex:1}
+.demo-bakery .dk-title{color:#2c1810;font-size:12px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;line-height:1.2;margin-bottom:4px}
+.demo-bakery .dk-sub{color:#8b6355;font-size:7px;line-height:1.4;margin-bottom:8px}
+.demo-bakery .dk-btn{background:#c0392b;color:white;font-size:7px;padding:4px 10px;border-radius:4px;font-weight:700;display:inline-block}
+.demo-bakery .dk-img{width:60px;height:60px;background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+
+/* AUTO DETAIL DEMO */
+.demo-auto{background:#0a0a0a}
+.demo-auto .da-nav{background:#111;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+.demo-auto .da-logo{color:#3498db;font-weight:700;font-size:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.demo-auto .da-hero{flex:1;background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;position:relative}
+.demo-auto .da-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#3498db,transparent)}
+.demo-auto .da-title{color:white;font-size:12px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:1px;text-transform:uppercase}
+.demo-auto .da-sub{color:#3498db;font-size:7px;letter-spacing:2px;text-transform:uppercase}
+.demo-auto .da-btn{background:transparent;border:1px solid #3498db;color:#3498db;font-size:7px;padding:4px 10px;border-radius:4px;font-weight:700}
+.demo-auto .da-car{font-size:22px}
+
+/* SALON DEMO */
+.demo-salon{background:#1a0a2e}
+.demo-salon .ds-nav{background:#120820;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+.demo-salon .ds-logo{color:#e91e8c;font-weight:700;font-size:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.demo-salon .ds-hero{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.demo-salon .ds-title{color:white;font-size:12px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif}
+.demo-salon .ds-sub{color:rgba(255,255,255,0.4);font-size:7px}
+.demo-salon .ds-btn{background:linear-gradient(90deg,#e91e8c,#9c27b0);color:white;font-size:7px;padding:4px 10px;border-radius:100px;font-weight:700}
+.demo-salon .ds-sparkle{font-size:20px}
+
+/* RESTAURANT DEMO */
+.demo-restaurant{background:#1c1208}
+.demo-restaurant .dr-nav{background:#251a0a;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+.demo-restaurant .dr-logo{color:#f39c12;font-weight:800;font-size:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.demo-restaurant .dr-hero{flex:1;display:flex;align-items:center;padding:12px;gap:10px}
+.demo-restaurant .dr-text{flex:1}
+.demo-restaurant .dr-title{color:white;font-size:11px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;line-height:1.2;margin-bottom:4px}
+.demo-restaurant .dr-sub{color:rgba(255,255,255,0.4);font-size:7px;margin-bottom:8px}
+.demo-restaurant .dr-btn{background:#f39c12;color:#1c1208;font-size:7px;padding:4px 10px;border-radius:4px;font-weight:700;display:inline-block}
+.demo-restaurant .dr-img{width:56px;height:56px;background:linear-gradient(135deg,#e74c3c,#c0392b);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+
+/* FITNESS DEMO */
+.demo-fitness{background:#0d1117}
+.demo-fitness .df-nav{background:#161b22;padding:8px 12px;display:flex;justify-content:space-between;align-items:center}
+.demo-fitness .df-logo{color:#00ff88;font-weight:700;font-size:10px;font-family:'Plus Jakarta Sans',sans-serif}
+.demo-fitness .df-hero{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:8px}
+.demo-fitness .df-badge{background:rgba(0,255,136,0.1);border:1px solid rgba(0,255,136,0.2);color:#00ff88;font-size:6px;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.demo-fitness .df-title{color:white;font-size:12px;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;text-align:center;line-height:1.2}
+.demo-fitness .df-btn{background:#00ff88;color:#0d1117;font-size:7px;padding:4px 10px;border-radius:4px;font-weight:700}
+
+.demo-info{padding:20px}
+.demo-tag{display:inline-block;background:var(--gold-light);color:#92600a;font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:100px;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em}
+.demo-info h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.demo-info p{font-size:0.82rem;color:var(--gray-500);margin-bottom:14px;line-height:1.5}
+.demo-btn{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:white;font-size:0.78rem;font-weight:600;padding:8px 16px;border-radius:var(--radius-sm);cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:.2s}
+.demo-btn:hover{background:var(--navy-mid)}
+.demo-btn svg{width:14px;height:14px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,20,40,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s;backdrop-filter:blur(4px)}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--white);border-radius:var(--radius-lg);width:100%;max-width:900px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px);transition:transform .25s;box-shadow:var(--shadow-lg)}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-header{padding:20px 24px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;justify-content:space-between}
+.modal-header h3{font-size:1.1rem;font-weight:700;color:var(--navy)}
+.modal-close{background:var(--gray-100);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:.2s}
+.modal-close:hover{background:var(--gray-300)}
+.modal-body{flex:1;overflow-y:auto}
+.modal-site{width:100%;min-height:500px;display:flex;flex-direction:column}
+
+/* FULL SITE PREVIEWS IN MODAL */
+.site-nav{padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.site-hero{flex:1;display:flex;align-items:center;padding:40px 32px;gap:32px}
+.site-hero-text{flex:1}
+.site-hero-visual{width:200px;flex-shrink:0}
+.site-hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;line-height:1.15;margin-bottom:12px}
+.site-hero p{line-height:1.6;margin-bottom:20px;font-size:0.9rem}
+.site-services{padding:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.site-service-card{padding:16px;border-radius:10px;text-align:center}
+.site-service-card .icon{font-size:1.6rem;margin-bottom:8px}
+.site-service-card h4{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.9rem;margin-bottom:4px}
+.site-service-card p{font-size:0.75rem;line-height:1.5}
+
+/* BARBER FULL */
+.barber-site .site-nav{background:#16213e}
+.barber-site .site-logo{color:#e94560;font-weight:800;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif}
+.barber-site .site-links{display:flex;gap:20px}
+.barber-site .site-links span{color:rgba(255,255,255,0.5);font-size:0.8rem;cursor:pointer}
+.barber-site .site-hero{background:linear-gradient(135deg,#1a1a2e,#16213e);min-height:260px}
+.barber-site .site-hero h1{color:white;font-size:1.8rem}
+.barber-site .site-hero p{color:rgba(255,255,255,0.6);font-size:0.9rem}
+.barber-site .site-hero .btn{background:#e94560;color:white;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer}
+.barber-site .site-services{background:#f8f9fa}
+.barber-site .site-service-card{background:white;border:1px solid #e9ecef}
+.barber-site .site-service-card h4{color:#1a1a2e}
+.barber-site .site-service-card p{color:#6c757d}
+.barber-site .site-footer{background:#16213e;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.4);font-size:0.78rem}
+
+/* BAKERY FULL */
+.bakery-site .site-nav{background:white;border-bottom:1px solid #f0e8d8}
+.bakery-site .site-logo{color:#c0392b;font-weight:800;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif}
+.bakery-site .site-links span{color:#8b6355;font-size:0.8rem;cursor:pointer}
+.bakery-site .site-links{display:flex;gap:20px}
+.bakery-site .site-hero{background:#fdf6ec;min-height:240px}
+.bakery-site .site-hero h1{color:#2c1810;font-size:1.7rem}
+.bakery-site .site-hero p{color:#8b6355}
+.bakery-site .site-hero .btn{background:#c0392b;color:white;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer}
+.bakery-site .site-hero-visual{background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:16px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.bakery-site .site-services{background:#fff}
+.bakery-site .site-service-card{background:#fdf6ec}
+.bakery-site .site-service-card h4{color:#2c1810}
+.bakery-site .site-service-card p{color:#8b6355}
+.bakery-site .site-footer{background:#2c1810;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.4);font-size:0.78rem}
+
+/* AUTO FULL */
+.auto-site .site-nav{background:#111}
+.auto-site .site-logo{color:#3498db;font-weight:800;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif}
+.auto-site .site-links{display:flex;gap:20px}
+.auto-site .site-links span{color:rgba(255,255,255,0.4);font-size:0.8rem;cursor:pointer}
+.auto-site .site-hero{background:linear-gradient(135deg,#0a0a0a,#1a1a1a);min-height:260px}
+.auto-site .site-hero h1{color:white;font-size:1.7rem;text-transform:uppercase;letter-spacing:-0.5px}
+.auto-site .site-hero p{color:rgba(255,255,255,0.5)}
+.auto-site .site-hero .btn{background:#3498db;color:white;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer}
+.auto-site .site-hero-visual{font-size:4rem;display:flex;align-items:center;justify-content:center}
+.auto-site .site-services{background:#0a0a0a}
+.auto-site .site-service-card{background:#111;border:1px solid #222}
+.auto-site .site-service-card h4{color:white}
+.auto-site .site-service-card p{color:rgba(255,255,255,0.4)}
+.auto-site .site-footer{background:#0a0a0a;border-top:1px solid #222;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.2);font-size:0.78rem}
+
+/* SALON FULL */
+.salon-site .site-nav{background:#120820}
+.salon-site .site-logo{color:#e91e8c;font-weight:800;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif}
+.salon-site .site-links{display:flex;gap:20px}
+.salon-site .site-links span{color:rgba(255,255,255,0.4);font-size:0.8rem;cursor:pointer}
+.salon-site .site-hero{background:linear-gradient(135deg,#1a0a2e,#2d1b4e);min-height:260px}
+.salon-site .site-hero h1{color:white;font-size:1.7rem}
+.salon-site .site-hero p{color:rgba(255,255,255,0.5)}
+.salon-site .site-hero .btn{background:linear-gradient(90deg,#e91e8c,#9c27b0);color:white;padding:10px 22px;border-radius:100px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer}
+.salon-site .site-hero-visual{font-size:3.5rem;display:flex;align-items:center;justify-content:center}
+.salon-site .site-services{background:#1a0a2e}
+.salon-site .site-service-card{background:#2d1b4e}
+.salon-site .site-service-card h4{color:white}
+.salon-site .site-service-card p{color:rgba(255,255,255,0.4)}
+.salon-site .site-footer{background:#120820;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.78rem}
+
+/* RESTAURANT FULL */
+.restaurant-site .site-nav{background:#251a0a}
+.restaurant-site .site-logo{color:#f39c12;font-weight:800;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif}
+.restaurant-site .site-links{display:flex;gap:20px}
+.restaurant-site .site-links span{color:rgba(255,255,255,0.4);font-size:0.8rem;cursor:pointer}
+.restaurant-site .site-hero{background:linear-gradient(135deg,#1c1208,#251a0a);min-height:260px}
+.restaurant-site .site-hero h1{color:white;font-size:1.7rem}
+.restaurant-site .site-hero p{color:rgba(255,255,255,0.5)}
+.restaurant-site .site-hero .btn{background:#f39c12;color:#1c1208;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer}
+.restaurant-site .site-hero-visual{background:linear-gradient(135deg,#e74c3c,#c0392b);border-radius:16px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem}
+.restaurant-site .site-services{background:#1c1208}
+.restaurant-site .site-service-card{background:#251a0a;border:1px solid #3d2a0f}
+.restaurant-site .site-service-card h4{color:white}
+.restaurant-site .site-service-card p{color:rgba(255,255,255,0.4)}
+.restaurant-site .site-footer{background:#120d05;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.78rem}
+
+/* FITNESS FULL */
+.fitness-site .site-nav{background:#161b22}
+.fitness-site .site-logo{color:#00ff88;font-weight:800;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif}
+.fitness-site .site-links{display:flex;gap:20px}
+.fitness-site .site-links span{color:rgba(255,255,255,0.4);font-size:0.8rem;cursor:pointer}
+.fitness-site .site-hero{background:linear-gradient(135deg,#0d1117,#161b22);min-height:260px}
+.fitness-site .site-hero h1{color:white;font-size:1.7rem}
+.fitness-site .site-hero p{color:rgba(255,255,255,0.5)}
+.fitness-site .site-hero .btn{background:#00ff88;color:#0d1117;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer}
+.fitness-site .site-hero-visual{font-size:3.5rem;display:flex;align-items:center;justify-content:center}
+.fitness-site .site-services{background:#0d1117}
+.fitness-site .site-service-card{background:#161b22;border:1px solid #21262d}
+.fitness-site .site-service-card h4{color:white}
+.fitness-site .site-service-card p{color:rgba(255,255,255,0.4)}
+.fitness-site .site-footer{background:#0d1117;border-top:1px solid #21262d;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.78rem}
+
+/* SERVICES */
+#services{background:var(--gray-50)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.service-card{background:var(--white);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--gray-100);transition:.25s}
+.service-card:hover{border-color:var(--gold);box-shadow:var(--shadow-md)}
+.service-icon{width:48px;height:48px;background:var(--gold-light);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.service-card p{font-size:0.85rem;color:var(--gray-500);line-height:1.6}
+
+/* PRICING */
+#pricing{background:var(--white)}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px;max-width:700px}
+.pricing-card{border-radius:var(--radius-lg);padding:32px;border:2px solid var(--gray-100);position:relative}
+.pricing-card.featured{background:var(--navy);border-color:var(--navy)}
+.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:0.72rem;font-weight:700;padding:4px 14px;border-radius:100px;white-space:nowrap}
+.pricing-card h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.pricing-card.featured h3{color:var(--white)}
+.pricing-price{font-size:2.4rem;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;color:var(--navy);line-height:1}
+.pricing-card.featured .pricing-price{color:var(--gold)}
+.pricing-period{font-size:0.82rem;color:var(--gray-500);margin-bottom:20px}
+.pricing-card.featured .pricing-period{color:rgba(255,255,255,0.5)}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.pricing-features li{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--gray-700)}
+.pricing-card.featured .pricing-features li{color:rgba(255,255,255,0.8)}
+.pricing-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.pricing-card.featured .pricing-features li::before{color:var(--gold)}
+.pricing-cta{width:100%;padding:12px;border-radius:var(--radius-sm);font-weight:700;font-size:0.9rem;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;transition:.2s}
+.pricing-cta-outline{background:transparent;border:2px solid var(--navy);color:var(--navy)}
+.pricing-cta-outline:hover{background:var(--navy);color:white}
+.pricing-cta-solid{background:var(--gold);color:var(--navy)}
+.pricing-cta-solid:hover{background:#e09310}
+
+/* HOW IT WORKS */
+#how{background:var(--gray-50)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;position:relative}
+.steps::before{content:'';position:absolute;top:28px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:2px;background:var(--gray-100);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:56px;height:56px;background:var(--navy);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.1rem;margin:0 auto 16px;position:relative}
+.step-num::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid var(--gray-100)}
+.step h4{font-size:0.95rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.step p{font-size:0.82rem;color:var(--gray-500);line-height:1.5}
+
+/* CONTACT */
+#contact{background:var(--navy);padding:90px 5%}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.contact-text h2{color:var(--white);font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:16px}
+.contact-text p{color:rgba(255,255,255,0.6);margin-bottom:32px}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.contact-detail .icon{width:40px;height:40px;background:rgba(255,255,255,0.07);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-detail p{color:rgba(255,255,255,0.7);font-size:0.9rem}
+.contact-detail strong{color:white;display:block;font-size:0.82rem;margin-bottom:1px}
+.contact-form{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.form-group label{font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.7);letter-spacing:.03em}
+.form-group input,.form-group textarea,.form-group select{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-sm);padding:11px 14px;color:white;font-family:'Inter',sans-serif;font-size:0.9rem;outline:none;transition:.2s;width:100%}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,0.25)}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold);background:rgba(255,255,255,0.1)}
+.form-group select option{background:#0F1F3D;color:white}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-submit{width:100%;background:var(--gold);color:var(--navy);padding:14px;border-radius:var(--radius-sm);font-weight:700;font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif;cursor:pointer;border:none;transition:.2s;margin-top:4px}
+.form-submit:hover{background:#e09310;transform:translateY(-1px)}
+.form-success{display:none;text-align:center;padding:20px}
+.form-success .check{font-size:2.5rem;margin-bottom:12px}
+.form-success h3{color:white;margin-bottom:8px}
+.form-success p{color:rgba(255,255,255,0.6);font-size:0.9rem}
+
+/* FOOTER */
+footer{background:#080f1e;padding:40px 5% 24px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.footer-logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.3rem;color:white;display:flex;align-items:center;gap:8px}
+.footer-links{display:flex;gap:28px}
+.footer-links a{color:rgba(255,255,255,0.4);font-size:0.85rem;transition:.2s}
+.footer-links a:hover{color:white}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{color:rgba(255,255,255,0.25);font-size:0.78rem}
+.footer-badge{background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.2);color:var(--gold);font-size:0.72rem;font-weight:600;padding:4px 12px;border-radius:100px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr}
+  .hero-card{display:none}
+  .demos-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps::before{display:none}
+  .contact-inner{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .site-services{grid-template-columns:1fr!important}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .demos-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .trust-inner{gap:20px}
+  .footer-top{flex-direction:column;gap:20px;text-align:center}
+  .footer-bottom{flex-direction:column;gap:10px;text-align:center}
+  .form-row{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}
+  .btn-primary,.btn-outline{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><span class="logo-dot"></span>SmithSites</div>
+    <div class="nav-links">
+      <a href="#demos">Demo Sites</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#how">How It Works</a>
+      <a href="#contact" class="nav-cta">Get Your Website</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Jackson, MS Local Web Designer</div>
+      <h1>Your Business Deserves to Be <span>Found Online</span></h1>
+      <p>I build clean, professional websites for local businesses in Jackson and surrounding areas. No templates. No fluff. Just results.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Get a Free Demo Site
+          <svg viewBox="0 0 20 20" fill="currentColor" width="18" height="18"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+        </button>
+        <button class="btn-outline" onclick="document.getElementById('demos').scrollIntoView({behavior:'smooth'})">
+          View Demo Sites
+        </button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">48hr</span><div class="stat-label">Average turnaround</div></div>
+        <div class="stat"><span class="stat-num">$150</span><div class="stat-label">One-time setup fee</div></div>
+        <div class="stat"><span class="stat-num">100%</span><div class="stat-label">Custom built for you</div></div>
+        <div class="stat"><span class="stat-num">Local</span><div class="stat-label">Jackson, MS based</div></div>
+      </div>
+      <div class="hero-pricing">
+        <div class="price-item"><div class="price-num">$150</div><div class="price-label">Upfront setup</div></div>
+        <div class="price-divider"></div>
+        <div class="price-item"><div class="price-num">$50</div><div class="price-label">Per month</div></div>
+        <div class="price-divider"></div>
+        <div class="price-item"><div class="price-num">∞</div><div class="price-label">Updates included</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">✅</span> No contracts required</div>
+    <div class="trust-item"><span class="trust-icon">🚀</span> Live in 48–72 hours</div>
+    <div class="trust-item"><span class="trust-icon">📱</span> Mobile-friendly design</div>
+    <div class="trust-item"><span class="trust-icon">🔒</span> SSL security included</div>
+    <div class="trust-item"><span class="trust-icon">📍</span> Based in Jackson, MS</div>
+  </div>
+</div>
+
+<!-- DEMOS -->
+<section id="demos">
+  <div class="section-inner">
+    <div class="demos-header">
+      <div class="section-label">Real Demo Sites</div>
+      <h2 class="section-title">This Could Be Your Business</h2>
+      <p class="section-sub">Click any demo below to see a full preview of what your website could look like. These are real designs built for real business types.</p>
+    </div>
+    <div class="demos-grid">
+
+      <!-- Barbershop -->
+      <div class="demo-card" onclick="openModal('barber')">
+        <div class="demo-preview demo-barber">
+          <div class="demo-preview-inner">
+            <div class="db-nav"><span class="db-logo">✂ King Cuts</span><div class="db-links"><span>Book</span><span>Services</span><span>Contact</span></div></div>
+            <div class="db-hero"><span class="db-scissors">✂️</span><div class="db-title">Premium Cuts.<br>Every Time.</div><div class="db-sub">Walk-ins welcome • Jackson, MS</div><div class="db-btn">Book Appointment</div></div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <span class="demo-tag">Barbershop</span>
+          <h3>King Cuts Barbershop</h3>
+          <p>Bold dark design with online booking, services menu, and gallery.</p>
+          <button class="demo-btn">View Full Demo <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Bakery -->
+      <div class="demo-card" onclick="openModal('bakery')">
+        <div class="demo-preview demo-bakery">
+          <div class="demo-preview-inner">
+            <div class="dk-nav"><span class="dk-logo">🥐 Sweet Layers</span><div class="dk-links"><span>Menu</span><span>Order</span><span>About</span></div></div>
+            <div class="dk-hero"><div class="dk-text"><div class="dk-title">Handmade with<br>Love Since 2018</div><div class="dk-sub">Fresh pastries, custom cakes & catering for every occasion in Jackson</div><span class="dk-btn">Order Now</span></div><div class="dk-img">🍰</div></div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <span class="demo-tag">Bakery</span>
+          <h3>Sweet Layers Bakery</h3>
+          <p>Warm, inviting design with online ordering, gallery, and catering info.</p>
+          <button class="demo-btn">View Full Demo <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Auto Detail -->
+      <div class="demo-card" onclick="openModal('auto')">
+        <div class="demo-preview demo-auto">
+          <div class="demo-preview-inner">
+            <div class="da-nav"><span class="da-logo">🚗 Elite Detail</span><div style="display:flex;gap:8px"><span style="font-size:7px;color:rgba(255,255,255,0.4)">Services</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">Book</span></div></div>
+            <div class="da-hero"><span class="da-car">🚗</span><div class="da-title">Your Car. Perfected.</div><div class="da-sub">PROFESSIONAL AUTO DETAILING</div><div class="da-btn">Get a Quote</div><div class="da-line"></div></div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <span class="demo-tag">Auto Detail</span>
+          <h3>Elite Auto Detail</h3>
+          <p>Sleek dark design with packages, booking form, and before/after gallery.</p>
+          <button class="demo-btn">View Full Demo <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Salon -->
+      <div class="demo-card" onclick="openModal('salon')">
+        <div class="demo-preview demo-salon">
+          <div class="demo-preview-inner">
+            <div class="ds-nav"><span class="ds-logo">✨ Glow Studio</span><div style="display:flex;gap:8px"><span style="font-size:7px;color:rgba(255,255,255,0.3)">Services</span><span style="font-size:7px;color:rgba(255,255,255,0.3)">Book</span></div></div>
+            <div class="ds-hero"><span class="ds-sparkle">💅</span><div class="ds-title">Feel Confident.<br>Look Amazing.</div><div class="ds-sub">Beauty & nail studio • Jackson, MS</div><div class="ds-btn">Book Appointment</div></div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <span class="demo-tag">Beauty Salon</span>
+          <h3>Glow Beauty Studio</h3>
+          <p>Luxe purple gradient design with service menu and appointment booking.</p>
+          <button class="demo-btn">View Full Demo <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Restaurant -->
+      <div class="demo-card" onclick="openModal('restaurant')">
+        <div class="demo-preview demo-restaurant">
+          <div class="demo-preview-inner">
+            <div class="dr-nav"><span class="dr-logo">🍖 Soul Kitchen</span><div style="display:flex;gap:8px"><span style="font-size:7px;color:rgba(255,255,255,0.4)">Menu</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">Order</span></div></div>
+            <div class="dr-hero"><div class="dr-text"><div class="dr-title">Southern Soul<br>Food Done Right</div><div class="dr-sub">Dine in • Takeout • Catering • Jackson, MS</div><span class="dr-btn">View Menu</span></div><div class="dr-img">🍗</div></div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <span class="demo-tag">Restaurant</span>
+          <h3>Soul Kitchen Restaurant</h3>
+          <p>Rich dark warm design with full menu, hours, and online ordering.</p>
+          <button class="demo-btn">View Full Demo <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+      <!-- Fitness -->
+      <div class="demo-card" onclick="openModal('fitness')">
+        <div class="demo-preview demo-fitness">
+          <div class="demo-preview-inner">
+            <div class="df-nav"><span class="df-logo">⚡ PowerUp Gym</span><div style="display:flex;gap:8px"><span style="font-size:7px;color:rgba(255,255,255,0.4)">Classes</span><span style="font-size:7px;color:rgba(255,255,255,0.4)">Join</span></div></div>
+            <div class="df-hero"><div class="df-badge">Now Accepting Members</div><div class="df-title">Train Hard.<br>Live Strong.</div><div class="df-btn">Start Free Trial</div></div>
+          </div>
+        </div>
+        <div class="demo-info">
+          <span class="demo-tag">Gym / Fitness</span>
+          <h3>PowerUp Gym</h3>
+          <p>High energy dark design with class schedule, pricing, and free trial CTA.</p>
+          <button class="demo-btn">View Full Demo <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="section-label">What You Get</div>
+    <h2 class="section-title">Everything Your Business Needs</h2>
+    <p class="section-sub">Every website I build comes fully loaded — no hidden add-ons, no surprise fees.</p>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">🎨</div><h3>Custom Design</h3><p>Built from scratch to match your brand, colors, and personality. No cookie-cutter templates.</p></div>
+      <div class="service-card"><div class="service-icon">📱</div><h3>Mobile Friendly</h3><p>Looks perfect on every phone, tablet, and computer. Over 60% of customers browse on mobile.</p></div>
+      <div class="service-card"><div class="service-icon">⚡</div><h3>Fast Loading</h3><p>Optimized for speed so customers don't bounce. Slow sites lose business — yours won't.</p></div>
+      <div class="service-card"><div class="service-icon">🔒</div><h3>SSL Security</h3><p>Secure HTTPS certificate included so customers trust your site and Google ranks it higher.</p></div>
+      <div class="service-card"><div class="service-icon">📍</div><h3>Google Maps</h3><p>Your location embedded so customers can find you instantly and get directions with one tap.</p></div>
+      <div class="service-card"><div class="service-icon">🔄</div><h3>Monthly Updates</h3><p>Need to change hours, add photos, or update prices? Included in your $50/month — just text me.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div class="section-label">Simple Pricing</div>
+    <h2 class="section-title">Straightforward. No Surprises.</h2>
+    <p class="section-sub">Two simple fees. No contracts. Cancel anytime.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>One-Time Setup</h3>
+        <div class="pricing-price">$150</div>
+        <div class="pricing-period">Paid once before we start</div>
+        <ul class="pricing-features">
+          <li>Custom website design</li>
+          <li>Up to 5 pages</li>
+          <li>Mobile responsive</li>
+          <li>Contact form</li>
+          <li>Google Maps integration</li>
+          <li>Domain connection</li>
+        </ul>
+        <button class="pricing-cta pricing-cta-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Started</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <h3>Monthly Plan</h3>
+        <div class="pricing-price">$50</div>
+        <div class="pricing-period">Per month, cancel anytime</div>
+        <ul class="pricing-features">
+          <li>Website stays live & hosted</li>
+          <li>Unlimited small updates</li>
+          <li>SSL certificate maintained</li>
+          <li>Technical support</li>
+          <li>Monthly performance check</li>
+          <li>Direct text access to Jamauri</li>
+        </ul>
+        <button class="pricing-cta pricing-cta-solid" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get My Website</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner">
+    <div class="section-label">The Process</div>
+    <h2 class="section-title">Up and Running in 4 Steps</h2>
+    <p class="section-sub">From first call to live website — usually done in 48 to 72 hours.</p>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><h4>Free Zoom Call</h4><p>We hop on a quick call so I can show you a demo and learn about your business.</p></div>
+      <div class="step"><div class="step-num">2</div><h4>You Pay $150</h4><p>One-time setup fee paid upfront via Stripe, Cash App, or Zelle. Then I get to work.</p></div>
+      <div class="step"><div class="step-num">3</div><h4>I Build It</h4><p>Your custom site is built within 48–72 hours. You review it and I make any changes.</p></div>
+      <div class="step"><div class="step-num">4</div><h4>You Go Live</h4><p>Site goes live on your domain. $50/month keeps it running and updated forever.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <div class="section-label" style="color:var(--gold)">Ready to Get Started?</div>
+      <h2>Let's Build Your Website</h2>
+      <p>Fill out the form and I'll reach out within 24 hours to schedule your free Zoom demo. No pressure, no commitment.</p>
+      <div class="contact-detail"><div class="icon">📞</div><div><strong>Phone / Text</strong><p>(601) 000-0000</p></div></div>
+      <div class="contact-detail"><div class="icon">📧</div><div><strong>Email</strong><p>jamauri@smithsites.com</p></div></div>
+      <div class="contact-detail"><div class="icon">📍</div><div><strong>Location</strong><p>Jackson, Mississippi</p></div></div>
+    </div>
+    <div class="contact-form">
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="form-group"><label>Business Name</label><input type="text" placeholder="Joe's Barbershop"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(601) 555-0000"></div>
+        <div class="form-group"><label>Business Type</label>
+          <select>
+            <option value="" disabled selected>Select your business type</option>
+            <option>Barbershop / Salon</option>
+            <option>Restaurant / Food</option>
+            <option>Auto / Detailing</option>
+            <option>Fitness / Gym</option>
+            <option>Retail Store</option>
+            <option>Cleaning Service</option>
+            <option>Contractor / Handyman</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Anything else I should know?</label><textarea placeholder="Tell me about your business, what pages you need, any colors or styles you like..."></textarea></div>
+        <button class="form-submit" onclick="submitForm()">Send My Request →</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="check">✅</div>
+        <h3 style="color:white">Request Sent!</h3>
+        <p>Thanks! I'll reach out within 24 hours to schedule your free Zoom demo. Talk soon!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo"><span style="width:8px;height:8px;background:var(--gold);border-radius:50%;display:inline-block"></span>SmithSites</div>
+      <div class="footer-links">
+        <a href="#demos">Demos</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 SmithSites by Jamauri Smith · Jackson, MS</div>
+      <div class="footer-badge">🚀 Websites from $150</div>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="modalTitle">Demo Preview</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+const demos = {
+  barber: {
+    title: "King Cuts Barbershop — Demo",
+    html: `<div class="modal-site barber-site">
+      <div class="site-nav"><span class="site-logo">✂ King Cuts</span><div class="site-links"><span>Services</span><span>Gallery</span><span>Book</span><span>Contact</span></div></div>
+      <div class="site-hero" style="background:linear-gradient(135deg,#1a1a2e,#16213e);min-height:260px">
+        <div class="site-hero-text"><h1 style="color:white;font-size:1.8rem">Premium Cuts.<br>Every Time.</h1><p style="color:rgba(255,255,255,0.6)">Walk-ins welcome. Appointments preferred. Located in the heart of Jackson, MS — serving the community with precision cuts since 2020.</p><span class="btn" style="background:#e94560;color:white;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer">Book an Appointment</span></div>
+        <div class="site-hero-visual" style="font-size:4rem;display:flex;align-items:center;justify-content:center">✂️</div>
+      </div>
+      <div class="site-services" style="background:#f8f9fa">
+        <div class="site-service-card" style="background:white;border:1px solid #e9ecef;border-radius:10px"><div class="icon">💈</div><h4 style="color:#1a1a2e">Classic Cut</h4><p style="color:#6c757d">$25 · Clean fade with lineup</p></div>
+        <div class="site-service-card" style="background:white;border:1px solid #e9ecef;border-radius:10px"><div class="icon">🪒</div><h4 style="color:#1a1a2e">Shave & Shape</h4><p style="color:#6c757d">$20 · Hot towel beard shape-up</p></div>
+        <div class="site-service-card" style="background:white;border:1px solid #e9ecef;border-radius:10px"><div class="icon">👑</div><h4 style="color:#1a1a2e">VIP Package</h4><p style="color:#6c757d">$40 · Cut + shave + scalp treatment</p></div>
+      </div>
+      <div class="site-footer">© 2025 King Cuts Barbershop · Jackson, MS · (601) 555-0000</div>
+    </div>`
+  },
+  bakery: {
+    title: "Sweet Layers Bakery — Demo",
+    html: `<div class="modal-site bakery-site">
+      <div class="site-nav"><span class="site-logo">🥐 Sweet Layers</span><div class="site-links"><span>Menu</span><span>Custom Cakes</span><span>Order Online</span><span>Contact</span></div></div>
+      <div class="site-hero" style="background:#fdf6ec;min-height:240px">
+        <div class="site-hero-text"><h1 style="color:#2c1810;font-size:1.7rem">Handmade Goodness,<br>Baked Fresh Daily.</h1><p style="color:#8b6355">From custom birthday cakes to morning pastries — everything is made from scratch with love. Serving Jackson, MS since 2018.</p><span class="btn" style="background:#c0392b;color:white;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer">Order Online</span></div>
+        <div class="site-hero-visual" style="background:linear-gradient(135deg,#f39c12,#e67e22);border-radius:16px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem">🍰</div>
+      </div>
+      <div class="site-services" style="background:#fff">
+        <div class="site-service-card" style="background:#fdf6ec;border-radius:10px"><div class="icon">🎂</div><h4 style="color:#2c1810">Custom Cakes</h4><p style="color:#8b6355">Birthdays, weddings & events</p></div>
+        <div class="site-service-card" style="background:#fdf6ec;border-radius:10px"><div class="icon">🥐</div><h4 style="color:#2c1810">Fresh Pastries</h4><p style="color:#8b6355">Ready daily from 7am</p></div>
+        <div class="site-service-card" style="background:#fdf6ec;border-radius:10px"><div class="icon">🍽</div><h4 style="color:#2c1810">Catering</h4><p style="color:#8b6355">Corporate & private events</p></div>
+      </div>
+      <div class="site-footer" style="background:#2c1810;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.4);font-size:0.78rem">© 2025 Sweet Layers Bakery · Jackson, MS</div>
+    </div>`
+  },
+  auto: {
+    title: "Elite Auto Detail — Demo",
+    html: `<div class="modal-site auto-site">
+      <div class="site-nav"><span class="site-logo">🚗 Elite Detail</span><div class="site-links"><span>Packages</span><span>Gallery</span><span>Book</span><span>Contact</span></div></div>
+      <div class="site-hero" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);min-height:260px">
+        <div class="site-hero-text"><h1 style="color:white;font-size:1.7rem;text-transform:uppercase;letter-spacing:-0.5px">Your Car.<br>Perfected.</h1><p style="color:rgba(255,255,255,0.5)">Professional interior and exterior detailing in Jackson, MS. We come to you or you come to us. Book online in 60 seconds.</p><span class="btn" style="background:#3498db;color:white;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer">Get a Free Quote</span></div>
+        <div class="site-hero-visual" style="font-size:4rem;display:flex;align-items:center;justify-content:center">🚗</div>
+      </div>
+      <div class="site-services" style="background:#0a0a0a">
+        <div class="site-service-card" style="background:#111;border:1px solid #222;border-radius:10px"><div class="icon">✨</div><h4 style="color:white">Basic Wash</h4><p style="color:rgba(255,255,255,0.4)">$40 · Exterior wash & dry</p></div>
+        <div class="site-service-card" style="background:#111;border:1px solid #222;border-radius:10px"><div class="icon">💎</div><h4 style="color:white">Full Detail</h4><p style="color:rgba(255,255,255,0.4)">$120 · Interior + exterior</p></div>
+        <div class="site-service-card" style="background:#111;border:1px solid #222;border-radius:10px"><div class="icon">🏆</div><h4 style="color:white">Premium Package</h4><p style="color:rgba(255,255,255,0.4)">$200 · Full ceramic coat</p></div>
+      </div>
+      <div class="site-footer" style="background:#0a0a0a;border-top:1px solid #222;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.2);font-size:0.78rem">© 2025 Elite Auto Detail · Jackson, MS</div>
+    </div>`
+  },
+  salon: {
+    title: "Glow Beauty Studio — Demo",
+    html: `<div class="modal-site salon-site">
+      <div class="site-nav"><span class="site-logo">✨ Glow Studio</span><div class="site-links"><span>Services</span><span>Gallery</span><span>Book</span><span>Contact</span></div></div>
+      <div class="site-hero" style="background:linear-gradient(135deg,#1a0a2e,#2d1b4e);min-height:260px">
+        <div class="site-hero-text"><h1 style="color:white;font-size:1.7rem">Feel Confident.<br>Look Amazing.</h1><p style="color:rgba(255,255,255,0.5)">Full-service beauty and nail studio in Jackson, MS. Lashes, nails, hair, and more. Book your appointment online today.</p><span class="btn" style="background:linear-gradient(90deg,#e91e8c,#9c27b0);color:white;padding:10px 22px;border-radius:100px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer">Book Appointment</span></div>
+        <div class="site-hero-visual" style="font-size:3.5rem;display:flex;align-items:center;justify-content:center">💅</div>
+      </div>
+      <div class="site-services" style="background:#1a0a2e">
+        <div class="site-service-card" style="background:#2d1b4e;border-radius:10px"><div class="icon">💅</div><h4 style="color:white">Nails</h4><p style="color:rgba(255,255,255,0.4)">Gel, acrylic, pedicure & more</p></div>
+        <div class="site-service-card" style="background:#2d1b4e;border-radius:10px"><div class="icon">👁</div><h4 style="color:white">Lashes</h4><p style="color:rgba(255,255,255,0.4)">Classic, volume & hybrid sets</p></div>
+        <div class="site-service-card" style="background:#2d1b4e;border-radius:10px"><div class="icon">💇‍♀️</div><h4 style="color:white">Hair</h4><p style="color:rgba(255,255,255,0.4)">Braids, weaves & natural styles</p></div>
+      </div>
+      <div class="site-footer" style="background:#120820;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.78rem">© 2025 Glow Beauty Studio · Jackson, MS</div>
+    </div>`
+  },
+  restaurant: {
+    title: "Soul Kitchen Restaurant — Demo",
+    html: `<div class="modal-site restaurant-site">
+      <div class="site-nav"><span class="site-logo">🍖 Soul Kitchen</span><div class="site-links"><span>Menu</span><span>Order Online</span><span>Catering</span><span>Contact</span></div></div>
+      <div class="site-hero" style="background:linear-gradient(135deg,#1c1208,#251a0a);min-height:260px">
+        <div class="site-hero-text"><h1 style="color:white;font-size:1.7rem">Southern Soul Food<br>Done Right.</h1><p style="color:rgba(255,255,255,0.5)">Dine in, takeout, and catering available. Real Southern cooking made fresh every day in Jackson, MS. Come taste the difference.</p><span class="btn" style="background:#f39c12;color:#1c1208;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer">View Full Menu</span></div>
+        <div class="site-hero-visual" style="background:linear-gradient(135deg,#e74c3c,#c0392b);border-radius:16px;height:160px;display:flex;align-items:center;justify-content:center;font-size:3rem">🍗</div>
+      </div>
+      <div class="site-services" style="background:#1c1208">
+        <div class="site-service-card" style="background:#251a0a;border:1px solid #3d2a0f;border-radius:10px"><div class="icon">🍽</div><h4 style="color:white">Dine In</h4><p style="color:rgba(255,255,255,0.4)">Mon–Sat 11am–9pm</p></div>
+        <div class="site-service-card" style="background:#251a0a;border:1px solid #3d2a0f;border-radius:10px"><div class="icon">📦</div><h4 style="color:white">Takeout</h4><p style="color:rgba(255,255,255,0.4)">Order online, ready in 20 min</p></div>
+        <div class="site-service-card" style="background:#251a0a;border:1px solid #3d2a0f;border-radius:10px"><div class="icon">🎉</div><h4 style="color:white">Catering</h4><p style="color:rgba(255,255,255,0.4)">Events, parties & corporate</p></div>
+      </div>
+      <div class="site-footer" style="background:#120d05;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.78rem">© 2025 Soul Kitchen · Jackson, MS</div>
+    </div>`
+  },
+  fitness: {
+    title: "PowerUp Gym — Demo",
+    html: `<div class="modal-site fitness-site">
+      <div class="site-nav"><span class="site-logo">⚡ PowerUp Gym</span><div class="site-links"><span>Classes</span><span>Pricing</span><span>Schedule</span><span>Join</span></div></div>
+      <div class="site-hero" style="background:linear-gradient(135deg,#0d1117,#161b22);min-height:260px">
+        <div class="site-hero-text"><h1 style="color:white;font-size:1.7rem">Train Hard.<br>Live Strong.</h1><p style="color:rgba(255,255,255,0.5)">Jackson's most results-driven gym. Personal training, group classes, and open gym — all under one roof. Start your free trial today.</p><span class="btn" style="background:#00ff88;color:#0d1117;padding:10px 22px;border-radius:6px;font-size:0.85rem;font-weight:700;display:inline-block;cursor:pointer">Start Free Trial</span></div>
+        <div class="site-hero-visual" style="font-size:3.5rem;display:flex;align-items:center;justify-content:center">💪</div>
+      </div>
+      <div class="site-services" style="background:#0d1117">
+        <div class="site-service-card" style="background:#161b22;border:1px solid #21262d;border-radius:10px"><div class="icon">🏋️</div><h4 style="color:white">Personal Training</h4><p style="color:rgba(255,255,255,0.4)">1-on-1 sessions with a certified trainer</p></div>
+        <div class="site-service-card" style="background:#161b22;border:1px solid #21262d;border-radius:10px"><div class="icon">🤸</div><h4 style="color:white">Group Classes</h4><p style="color:rgba(255,255,255,0.4)">HIIT, yoga, spin & more daily</p></div>
+        <div class="site-service-card" style="background:#161b22;border:1px solid #21262d;border-radius:10px"><div class="icon">🔑</div><h4 style="color:white">Open Gym</h4><p style="color:rgba(255,255,255,0.4)">24/7 access with membership</p></div>
+      </div>
+      <div class="site-footer" style="background:#0d1117;border-top:1px solid #21262d;padding:20px 32px;text-align:center;color:rgba(255,255,255,0.3);font-size:0.78rem">© 2025 PowerUp Gym · Jackson, MS</div>
+    </div>`
+  }
+};
+
+function openModal(key) {
+  const d = demos[key];
+  document.getElementById('modalTitle').textContent = d.title;
+  document.getElementById('modalBody').innerHTML = d.html;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModalOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+function submitForm() {
+  document.getElementById('contactForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+function toggleMenu(el) {
+  el.classList.toggle('open');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
